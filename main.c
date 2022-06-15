@@ -169,7 +169,7 @@ int process_cmd(sh_t *data)
 	}
 	else
 	{
-		waitpid(pid, &status, WUNTRACED);
+		waitpid(pid, &status, WEXITSTATUS);
 	}
 	return (0);
 }
