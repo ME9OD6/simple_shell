@@ -1,6 +1,6 @@
 ## 0x16. C - Simple Shell
 
-#List of allowed functions and system calls
+## List of allowed functions and system calls
 access (man 2 access)
 chdir (man 2 chdir)
 close (man 2 close)
