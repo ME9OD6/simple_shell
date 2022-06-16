@@ -1,36 +1,35 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
-
-#include <stddef.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <limits.h>
+#include <string.h>
 
-#include "typedefs.h"
-#include "constants.h"
-
-
-/* global environemnt */
 extern char **environ;
-/* global program name */
-char *name;
-/* global aliases linked list */
-alias_t *aliases;
 
-/* signals and processes */
-void signal_handler(int);
+char *show_input(void);
+void prompt(void);
+char *_strcat(char *src);
+int _strlen(char *str);
+void place(char *str);
+char *findfile(char *command);
+char *find_command(char *command);
+int compare(char *s1, char *s2);
+int _strcmpdir(char *s1, char *s2);
+int charput(char c);
+void place(char *str);
+char *str_concat(char *s1, char *s2);
+int lookforslash(char *cmd);
+int compareExit(char *s1, char *s2);
+int compareEnv(char *s1, char *s2);
+void execute_proc(char **cmd);
+char **identify_string(char *parameter);
+void controlC(int sig);
 
-/* helpers for user inputs */
-char *get_user_input();
-
-/* helpers errors handling */
-/* 0 : readline_error */
-void readline_error(void);
-
-void (*handle_error[])(void) = {
-    readline_error
-};
-
-#endif /* _SHELL_H_ */
+#endif
